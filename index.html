@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MRISBRAND SIM DATABASE</title>
+  <meta name="description" content="Premium Intelligence Network">
+  <link rel="icon" href="favicon.ico">
+  <link href="css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0}
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: url('https://i.postimg.cc/9XxMCVLF/Screenshot-20250802-114226-3.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #0ff;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+    header {
+      text-align: center;
+      margin: 40px 0 20px;
+    }
+    .brand-title {
+      font-family: 'Great Vibes', cursive;
+      /* kept responsive but lowered minimum so it fits on small screens */
+      font-size: clamp(28px, 8vw, 120px);
+      color: #0ff;
+      text-shadow: 0 0 20px #0ff, 0 0 40px #00f;
+      line-height: 1;
+    }
+
+    /* Make any SVG inside brand-title scale with the text (badge matches text height) */
+    .brand-title svg {
+      height: 1em;
+      width: auto;
+      vertical-align: middle;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: .9rem;
+      letter-spacing: 4px;
+      color: #0ff;
+      text-shadow: 0 0 10px #00f;
+      text-transform: uppercase;
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: rgba(0,0,0,0.85);
+      border: 2px solid #0ff;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #0ff, 0 0 40px #00f;
+      padding: 20px;
+      text-align: center;
+    }
+    .card h2 { color: #0ff; margin-bottom: 12px; }
+    .card p, .card li { color: #0ff; opacity: 0.85; }
+    .card ul { list-style: none; padding: 0; }
+    .card ul li { padding: 8px 0; border-bottom: 1px solid rgba(0,255,255,0.2); }
+    .card ul li:last-child { border-bottom:none }
+    .form { margin-top: 15px; display: grid; gap: 12px; }
+    .input-wrap { position: relative; }
+    .input-wrap i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #0ff; }
+    input#phone {
+      width: 100%; padding: 14px 16px 14px 44px; border-radius: 10px; border: 2px solid #0ff;
+      background: rgba(0,0,0,0.7); color: #0ff; text-align: center; font-size: 1rem;
+    }
+    input#phone:focus { outline: none; box-shadow: 0 0 15px #0ff; }
+    .btn {
+      padding: 14px; border: 2px solid #0ff; border-radius: 10px; background: black; color: #0ff;
+      font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s;
+      box-shadow: 0 0 15px #0ff, 0 0 25px #00f;
+    }
+    .btn:hover { background: #0ff; color: black; transform: scale(1.04); }
+    .social-icons { display:flex; justify-content:center; gap:16px; margin:20px 0; }
+    .social-icon {
+      width: 45px; height: 45px; border:2px solid #0ff; border-radius:50%; display:flex;
+      align-items:center; justify-content:center; color:#0ff; font-size:1.2rem; box-shadow:0 0 10px #0ff;
+      transition:0.3s;
+    }
+    .social-icon:hover { background:#0ff; color:black; transform:scale(1.1); }
+    footer { text-align:center; font-size:.85rem; margin-top:40px; color:#0ff; opacity:0.7; }
+    .contact-buttons { display:grid; gap:10px; margin-top:15px; }
+    .contact-buttons .btn { display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; }
+    /* Results */
+    .result-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(62,167,255,0.3);
+      border-radius: 10px;
+      padding: 12px;
+      margin: 10px 0;
+      text-align: left;
+    }
+    .result-box .row { margin: 4px 0; }
+    .result-box .label { font-weight: bold; color: #3ea7ff; margin-right: 6px; }
+    .result-box .value { color: #fff; }
+    .msg { padding: 14px; border-radius: 10px; margin: 8px 0; text-align:center; }
+    .msg.loading { background: rgba(62,167,255,0.08); border:1px dashed rgba(62,167,255,0.2); }
+    .msg.error { background: rgba(255,0,0,0.06); border:1px solid rgba(255,0,0,0.12); color:#fff; }
+
+    /* mobile safety */
+    @media (max-width: 420px) {
+      .card { padding: 16px; }
+      .brand-title { font-size: clamp(22px, 9vw, 60px); }
+    }
+  </style>
+</head>
+
+<body>
+  
+            <section class="card">
+  <div class="brand-title" style="display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center;">
+
+    <!-- First Line: MRISBRAND -->
+    <span style="font-size: clamp(18px, 5vw, 28px);">
+      MRISBRAND
+    </span>
+
+    <!-- Second Line: SIM DATABASE + Verify Badge -->
+    <span style="display:inline-flex; align-items:center; justify-content:center; gap:6px; font-size: clamp(16px, 4.5vw, 24px);">
+      SIM DATABASE
+      <svg viewbox="0 0 512 512" aria-hidden="true" style="height:1em; width:1em; flex-shrink:0;">
+        <defs>
+          <lineargradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3ea7ff"></stop>
+            <stop offset="100%" stop-color="#9bd4ff"></stop>
+          </lineargradient>
+        </defs>
+        <path d="M256 24l54.2 38.4 65.5-6.5 24.7 61 61 24.7-6.5 65.5L512 256l-57.1 48.9 
+                 6.5 65.5-61 24.7-24.7 61-65.5-6.5L256 488l-54.2-38.4-65.5 6.5-24.7-61-61-24.7 
+                 6.5-65.5L0 256l57.1-48.9-6.5-65.5 61-24.7 24.7-61 65.5 6.5L256 24z" fill="url(#gradBlue)"></path>
+        <path d="M226 314l-56-56 34-34 22 22 86-86 34 34-120 120z" fill="#fff"></path>
+      </svg>
+    </span>
+
+  </div>
+</section>
+      
+    
+
+    <form id="form" class="form" autocomplete="off">
+      <div class="input-wrap">
+        <i class="fa-solid fa-shield-halved"></i>
+        <input id="phone" inputmode="numeric" placeholder="Enter number (e.g. 31192xxxxx)" maxlength="13">
+      </div>
+      <p class="input-guidance"></p>
+
+      <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+
+      <div class="contact-buttons">
+        <a href="https://mrisbrand-network-six.vercel.app/" target="_blank" class="btn">
+          <i class="fab fa-whatsapp"></i> Join Our Network
+        </a>
+      </div>
+    </form>
+
+    <div id="result"></div>
+
+    <section class="card">
+      <h2>About Us</h2>
+      <div class="hr"></div>
+      <p>MRISBRAND WORLD IS ONE OF THE TOP HACKERS TEAM IN PAKISTAN WHICH PROVIDE &#128175; FREE TOOLS AND MANY TRICKS.</p>
+    </section>
+
+    <section class="card">
+      <h2>Our Services</h2>
+      <div class="hr"></div>
+      <ul class="feature-list">
+        <li><i class="fa-solid fa-shield-halved"></i> CNIC / SIM Verification</li>
+        <li><i class="fa-solid fa-database"></i> FAKE SIMS + PASSPORT DETAILS &amp; LIVE LOCATION </li>
+        <li><i class="fa-solid fa-clock-rotate-left"></i> CDR OF ALL NETWORS</li>
+        <li><i class="fa-solid fa-lock"></i> ALL NADRA DATA AVAILABLE</li>
+      </ul>
+    </section>
+
+    <p>&copy; 2025 MRISBRAND INTELLIGENCE NETWORK | ALL RIGHTS RESERVED</p>
+    <p>v5.0.0 | OPERATION SPECTRE</p>
+  
+
+  <script>
+    (function Data() {
+      const form = document.getElementById('form');
+      const result = document.getElementById('result');
+
+      function show(html, cls = '') {
+        result.innerHTML = html;
+        if (cls) result.className = cls;
+      }
+
+      function escapeHtml(str) {
+        return String(str).replace(/[&<>"]/g, s => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[s]));
+      }
+
+      async function fetchData(num) {
+        try {
+          show('<div class="msg loading"><i class="fas fa-circle-notch fa-spin"><p>ACCESSING SECURE DATABASES...');
+          const url = `https://www.3patticenter.com/famofc/api/database.php?num=${encodeURIComponent(num)}`;
+
+          const res = await fetch(url, { method: 'GET' });
+          if (!res.ok) throw new Error('Network ' + res.status);
+
+          const data = await res.json();
+
+          if (data && data.status === 'success' && Array.isArray(data.data) && data.data.length > 0) {
+            let html = '';
+            data.data.forEach(rec => {
+              html += '<div class="result-box">';
+              Object.entries(rec).forEach(([k, v]) => {
+                html += `<div class="row"><span class="label">${escapeHtml(k).toUpperCase()}: <span class="value">${escapeHtml(v)}`;
+              });
+              html += '';
+            });
+            show(html);
+          } else {
+            const nf = `
+              <div class="msg error">
+                <i class="fas fa-triangle-exclamation" style="font-size:1.4em;display:block;margin-bottom:8px">
+                <p><strong>Data Not Found in Database.
+                
+              
+            `;
+            show(nf);
+          }
+        } catch (err) {
+          console.error(err);
+          show(`<div class="msg error">Error: Could not connect to the server. Please try again later.`);
+        }
+      }
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const num = document.getElementById('phone').value.trim();
+        const valid = /^(?:\+?92)?3\d{9}$|^3\d{9}$/.test(num);
+        if (!valid) {
+          show('<div class="msg error">Invalid number format. Please enter 10 digits without 0, like 3168598809.');
+          return;
+        }
+        fetchData(num);
+        if (window.__openAd) window.__openAd();
+      });
+    })();
+  </script>
+<script type="text/javascript" src="//pl26635370.revenuecpmgate.com/0d/d6/68/0dd66892ae1350e1c2ac63bd9e54e111.js"></script>
+<script type="text/javascript" src="//pl26635370.revenuecpmgate.com/0d/d6/68/0dd66892ae1350e1c2ac63bd9e54e111.js"></script></body>
+
+</html>
