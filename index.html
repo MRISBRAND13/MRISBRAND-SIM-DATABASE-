@@ -207,7 +207,7 @@
       async function fetchData(num) {
         try {
           show('<div class="msg loading"><i class="fas fa-circle-notch fa-spin"><p>ACCESSING SECURE DATABASES...');
-          const url = `https://www.3patticenter.com/famofc/api/database.php?num=${encodeURIComponent(num)}`;
+          const url = `https://fam-official.serv00.net/api/famofc_simdatabase.php`;
 
           const res = await fetch(url, { method: 'GET' });
           if (!res.ok) throw new Error('Network ' + res.status);
