@@ -15,221 +15,135 @@
     --accent-color: #d1c4e9;
     --outline-color: #311b92;
 }
+[data-shade="0"] { --primary-color: #9c27b0; --accent-color: #d1c4e9; --outline-color: #311b92; } 
+[data-shade="multi"] { --primary-color: #9c27b0; --accent-color: #ffffff; --outline-color: #444; }
 
-/* ===== MOBILE LAYOUT FIX ===== */
-body{
-    margin:0;
-    padding:0;
-    background: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Segoe UI', sans-serif;
+[data-shade="multi"] .brand-title,
+[data-shade="multi"] .search-btn,
+[data-shade="multi"] .join-btn {
+    animation: rgbAnim 6s infinite linear;
 }
 
-.app{
-    max-width:520px;
-    width:100%;
-    margin:0 auto;
-    padding:15px;
+@keyframes rgbAnim {
+    0% { background: #ff0000; border-color: #ff0000; color: white; box-shadow: 0 0 15px #ff0000; }
+    25% { background: #ffff00; border-color: #ffff00; box-shadow: 0 0 15px #ffff00; }
+    50% { background: #00ff00; border-color: #00ff00; box-shadow: 0 0 15px #00ff00; }
+    75% { background: #0000ff; border-color: #0000ff; box-shadow: 0 0 15px #0000ff; }
+    100% { background: #ff0000; border-color: #ff0000; box-shadow: 0 0 15px #ff0000; }
 }
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif; transition:all 0.4s ease;}
+body{background:radial-gradient(circle at 50% 50%, #16161a 0%, #0a0a0c 100%); color: var(--text-color); min-height:100vh; display:flex; justify-content:center; align-items:center;}
+.app{width:100%; max-width:480px; padding:20px;}
 
 /* HEADER */
-.header-container{
-    text-align:center;
-    margin-bottom:25px;
-}
+.brand-title{font-weight:900; font-size:26px; text-align:center; margin-bottom:25px; color:var(--primary-color); text-shadow:0 0 10px var(--primary-color);}
 
-.header-img{
-    width:120px;
-    height:120px;
-    border-radius:12px;
-    border:3px solid var(--primary-color);
-    box-shadow:0 0 20px var(--primary-color);
-}
+/* SEARCH BOX */
+.searchbox{background: var(--card-bg); padding:25px; border-radius:15px; border:1px solid var(--outline-color); text-align:center; margin-bottom:20px;}
+input{width:100%; padding:14px; border-radius:10px; border:1px solid #333; background:var(--input-bg); color:white; font-size:16px; margin-bottom:15px; text-align:center; outline:none;}
+input:focus{border-color:var(--primary-color);}
+button.search-btn{width:100%; padding:14px; border:none; border-radius:12px; background:var(--primary-color); color:white; font-weight:800; font-size:16px; cursor:pointer; margin-bottom:15px; box-shadow:0 0 15px var(--primary-color),0 0 30px var(--primary-color);}
+button.search-btn:hover{opacity:0.9; transform: scale(1.03);}
 
-.brand-title{
-    font-weight:900;
-    font-size:22px;
-    letter-spacing:3px;
+/* JOIN NETWORK BUTTON GLOW */
+button.join-btn{
+    width:100%; padding:14px; border:none; border-radius:12px; background:var(--primary-color); color:white; font-weight:700; font-size:16px; cursor:pointer;
+    box-shadow:0 0 15px var(--primary-color),0 0 30px var(--primary-color),0 0 45px var(--primary-color);
+    text-shadow:0 0 10px #fff;
     margin-top:10px;
-    color:var(--primary-color);
+    transition: all 0.3s ease;
+}
+button.join-btn:hover{
+    transform: scale(1.05);
+    box-shadow:0 0 20px var(--primary-color),0 0 40px var(--primary-color),0 0 60px var(--primary-color);
 }
 
-/* SEARCH */
-.searchbox{
-    background: var(--card-bg);
-    padding:20px;
-    border-radius:15px;
-    border:1px solid var(--outline-color);
-}
+/* RESULTS */
+.result-page{background: var(--card-bg); border-radius:15px; overflow:hidden; margin-top:20px; border:1px solid var(--outline-color);}
+.result-header{background: var(--primary-color); color:white; padding:12px; font-weight:700; text-align:center;}
+.result-table{width:100%; border-collapse:collapse;}
+.result-table td{border-bottom:1px solid #222; padding:12px; font-size:14px;}
+.result-table td:first-child{font-weight:bold; color: var(--accent-color); width:35%; text-transform:uppercase; font-size:12px;}
+.map-container{padding:12px; background:#000; margin-top:10px;}
+.map-frame{width:100%; height:200px; border:1px solid #333; border-radius:12px; margin-bottom:10px;}
+.action-buttons{display:flex; flex-direction:column; gap:8px; margin-bottom:10px;}
+.view-map-btn, .copy-map-btn{display:block; width:100%; text-align:center; padding:10px; font-weight:bold; border-radius:8px; font-size:12px; cursor:pointer; border:none;}
+.view-map-btn{background: var(--outline-color); color:white;}
+.copy-map-btn{background:#333; color:#0f0; border:1px solid #444;}
 
-input{
-    width:100%;
-    padding:14px;
-    border-radius:10px;
-    border:1px solid #333;
-    background:var(--input-bg);
-    color:white;
-    margin-bottom:12px;
-    text-align:center;
-}
-
-.search-btn{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    background:var(--primary-color);
-    color:white;
-    font-weight:800;
-    cursor:pointer;
-}
-
-/* JOIN BUTTON BELOW SEARCH */
-.join-btn{
-    width:100%;
-    margin-top:10px;
-    padding:12px;
-    border-radius:10px;
-    text-align:center;
-    background:#00c853;
-    color:white;
-    font-weight:bold;
-    text-decoration:none;
-    display:block;
-}
-
-/* RESULT */
-.result-page{
-    background: var(--card-bg);
-    border-radius:15px;
-    margin-top:20px;
-    border:1px solid var(--outline-color);
-}
-
-.result-header{
-    background: var(--primary-color);
-    padding:12px;
-    text-align:center;
-    font-weight:bold;
-}
-
-.result-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-.result-table td{
-    padding:10px;
-    border-bottom:1px solid #222;
-    font-size:13px;
-}
-
-/* MAP */
-.map-container{
-    padding:12px;
-}
-
-.map-frame{
-    width:100%;
-    height:200px;
-    border-radius:10px;
-    border:1px solid #333;
-    margin-bottom:10px;
-}
-
-.action-buttons{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.view-map-btn{
-    background:var(--outline-color);
-    color:white;
-    padding:10px;
-    text-align:center;
-    border-radius:8px;
-    text-decoration:none;
-}
-
-.copy-map-btn{
-    background:#333;
-    color:#00ff00;
-    padding:10px;
-    border-radius:8px;
-    border:1px solid #444;
-    cursor:pointer;
-}
-
-/* MOBILE PERFECT */
-@media(max-width:480px){
-    .app{padding:12px}
-    .brand-title{font-size:18px}
-}
+/* LOADER */
+.loader{display:none; text-align:center; margin-top:20px;}
+@keyframes spin{to{transform:rotate(360deg);}}
 </style>
 </head>
 
-<body>
+<body data-shade="0">
+<div class="app" id="mainApp">
 
-<div class="app">
-
-<div class="header-container">
-    <img src="https://i.postimg.cc/9XxMCVLF/Screenshot-20250802-114226-3.jpg" class="header-img">
     <div class="brand-title">𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 🎭</div>
-</div>
 
-<div class="searchbox">
-    <input id="phoneInput" type="text" placeholder="03XXXXXXXXX">
-    <button class="search-btn" onclick="executeSearch()">SEARCH DATABASE</button>
+    <div class="searchbox">
+        <input id="phoneInput" type="text" placeholder="03XXXXXXXXX" maxlength="11">
+        <button class="search-btn" onclick="executeSearch()">SEARCH DATABASE</button>
+        <button class="join-btn" onclick="window.open('https://mrisbrand-network-six.vercel.app/', '_blank')">JOIN OUR NETWORK</button>
+    </div>
 
-    <!-- JOIN BUTTON -->
-    <a href="https://mrisbrand-network-six.vercel.app/" target="_blank" class="join-btn">
-        🚀 JOIN OUR NETWORK
-    </a>
-</div>
+    <div class="loader" id="loader">
+        <div style="width:40px;height:40px;border:4px solid #333;border-top:4px solid var(--primary-color);border-radius:50%;animation:spin .8s linear infinite;margin:auto;"></div>
+    </div>
 
-<div id="results"></div>
+    <div id="status" style="text-align:center; margin-top:15px; color:var(--primary-color); font-weight:bold;"></div>
+    <div id="results"></div>
 
 </div>
 
 <script>
-const API="https://howler-database-api.vercel.app/api/lookup?phone=";
+const API = "https://howler-database-api.vercel.app/api/lookup?phone=";
 
-async function executeSearch(){
-    const num=document.getElementById("phoneInput").value.trim();
-    if(num.length<10){alert("Invalid Number");return;}
+async function executeSearch() {
+    const num = document.getElementById("phoneInput").value.trim();
+    const loader = document.getElementById("loader");
+    const results = document.getElementById("results");
+    const status = document.getElementById("status");
 
-    const res=await fetch(API+num);
-    const data=await res.json();
+    if(num.length < 10){ status.innerText="Error: Invalid Number"; return; }
 
-    if(!data.success || !data.result || data.result.length===0){
-        alert("No Records Found");
-        return;
+    results.innerHTML=""; status.innerText=""; loader.style.display="block";
+
+    try{
+        const res = await fetch(API + num);
+        const data = await res.json();
+        loader.style.display="none";
+
+        if(!data.success || !data.result || data.result.length===0){ status.innerText="No Records Found"; return; }
+        renderAll(data.result);
+    }catch(e){
+        loader.style.display="none";
+        status.innerText="API Offline";
     }
-
-    renderAll(data.result);
 }
 
-function copyToClipboard(text,btn){
+function copyToClipboard(text, btn){
     navigator.clipboard.writeText(text).then(()=>{
+        const original = btn.innerText;
         btn.innerText="✅ COPIED!";
-        setTimeout(()=>{btn.innerText="🔗 COPY MAP LINK"},2000);
+        setTimeout(()=>{ btn.innerText = original; },2000);
     });
 }
 
 function renderAll(records){
-    const results=document.getElementById("results");
+    const results = document.getElementById("results");
     results.innerHTML="";
-
-    records.forEach((r,i)=>{
-        const address=r.address||"N/A";
-        const encoded=encodeURIComponent(address);
-        const mapEmbed=`https://maps.google.com/maps?q=${encoded}&output=embed`;
-        const mapExternal=`https://www.google.com/maps/search/${encoded}`;
+    records.forEach((r,index)=>{
+        const address = r.address || "N/A";
+        const encoded = encodeURIComponent(address);
+        const mapEmbed = `https://maps.google.com/maps?q=${encoded}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+        const mapExternal = `https://www.google.com/maps/search/${encoded}`;
 
         results.innerHTML+=`
         <div class="result-page">
-            <div class="result-header">RECORD #${i+1}</div>
+            <div class="result-header">RECORD #${index+1}</div>
             <table class="result-table">
                 <tr><td>NAME</td><td>${r.name||"N/A"}</td></tr>
                 <tr><td>CNIC</td><td>${r.cnic||"N/A"}</td></tr>
@@ -237,12 +151,11 @@ function renderAll(records){
                 <tr><td>ADDRESS</td><td>${address}</td></tr>
             </table>
 
-            ${address!=="N/A"?`
-            <div class="map-container">
-                <iframe class="map-frame" src="${mapEmbed}"></iframe>
+            ${address!=="N/A"?`<div class="map-container">
+                <iframe class="map-frame" src="${mapEmbed}" frameborder="0"></iframe>
                 <div class="action-buttons">
                     <a href="${mapExternal}" target="_blank" class="view-map-btn">📍 OPEN IN GOOGLE MAPS</a>
-                    <button class="copy-map-btn" onclick="copyToClipboard('${mapExternal}',this)">🔗 COPY MAP LINK</button>
+                    <button class="copy-map-btn" onclick="copyToClipboard('${mapExternal}', this)">🔗 COPY MAP LINK</button>
                 </div>
             </div>`:''}
         </div>`;
