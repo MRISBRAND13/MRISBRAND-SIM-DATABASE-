@@ -26,7 +26,7 @@ body {
   display:flex;
   justify-content:center;
   align-items:flex-start;
-  padding:30px 10px;
+  padding:50px 10px 30px 10px;
   box-sizing:border-box;
 }
 
@@ -40,9 +40,9 @@ body {
 .app { width:100%; max-width:520px; }
 
 /* NEON HEADER BOX */
-.header-box { text-align:center; margin-bottom:30px; }
+.header-box { text-align:center; margin-bottom:40px; }
 .neon-box {
-  padding: 15px 25px;
+  padding: 20px 30px;
   border: 3px solid var(--primary-color);
   border-radius: 12px;
   color: var(--primary-color);
@@ -50,21 +50,26 @@ body {
   font-weight: 900;
   text-align: center;
   text-transform: uppercase;
+  display: inline-block;
   animation: neonPulse 1.5s infinite alternate;
 }
 
 /* SEARCH SECTION */
 .searchbox{
   background: var(--card-bg);
-  padding: 25px 20px;
+  padding:30px 20px;
   border-radius: 15px;
   border: 3px solid var(--outline-color);
   text-align:center;
-  margin-bottom:20px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   box-shadow:0 0 15px #0ff, 0 0 30px #0ff;
 }
 .searchbox input {
-  width:100%;
+  width:90%;
+  max-width:350px;
   padding:12px;
   border-radius:8px;
   border:2px solid var(--outline-color);
@@ -75,16 +80,17 @@ body {
   text-align:center;
   outline:none;
   box-shadow:0 0 10px #0ff inset;
-  transition: all 0.3s ease;
   animation: neonPulse 1.5s infinite alternate;
+  transition: all 0.3s ease;
 }
 .searchbox input:focus { 
   border-color: var(--primary-color); 
-  box-shadow: 0 0 15px #0ff inset;
+  box-shadow:0 0 15px #0ff inset;
 }
 .searchbox button.search-btn,
 .join-network {
-  width:100%;
+  width:90%;
+  max-width:350px;
   padding:12px;
   border:none;
   border-radius:8px;
@@ -95,7 +101,7 @@ body {
   cursor:pointer;
   text-transform:uppercase;
   margin-bottom:15px;
-  box-shadow:0 0 15px #0ff, 0 0 30px #0ff, 0 0 45px #00ffff;
+  box-shadow:0 0 15px #0ff,0 0 30px #0ff,0 0 45px #00ffff;
   animation: neonPulse 1.5s infinite alternate;
   transition: all 0.3s ease;
 }
