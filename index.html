@@ -6,71 +6,174 @@
 <title>𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 🎭</title>
 
 <style>
-:root {
-    --bg-color: #0a0a0c;
-    --card-bg: #121214;
-    --text-color: #ffffff;
-    --input-bg: #1a1a1d;
-    --primary-color: #9c27b0;
-    --accent-color: #d1c4e9;
-    --outline-color: #311b92;
-}
-[data-shade="0"] { --primary-color: #9c27b0; --accent-color: #d1c4e9; --outline-color: #311b92; } 
-[data-shade="multi"] { --primary-color: #9c27b0; --accent-color: #ffffff; --outline-color: #444; }
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
-[data-shade="multi"] .brand-title,
-[data-shade="multi"] .search-btn,
-[data-shade="multi"] .join-btn {
-    animation: rgbAnim 6s infinite linear;
+body {
+    margin:0;
+    font-family: 'Orbitron', sans-serif;
+    background: url('https://i.postimg.cc/9XxMCVLF/Screenshot-20250802-114226-3.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #0ff;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-height:100vh;
+    padding:30px 0;
 }
 
-@keyframes rgbAnim {
-    0% { background: #ff0000; border-color: #ff0000; color: white; box-shadow: 0 0 15px #ff0000; }
-    25% { background: #ffff00; border-color: #ffff00; box-shadow: 0 0 15px #ffff00; }
-    50% { background: #00ff00; border-color: #00ff00; box-shadow: 0 0 15px #00ff00; }
-    75% { background: #0000ff; border-color: #0000ff; box-shadow: 0 0 15px #0000ff; }
-    100% { background: #ff0000; border-color: #ff0000; box-shadow: 0 0 15px #ff0000; }
+/* APP CONTAINER */
+.app{
+    width: 100%;
+    max-width:480px;
+    padding:20px;
+    box-sizing:border-box;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif; transition:all 0.4s ease;}
-body{background:radial-gradient(circle at 50% 50%, #16161a 0%, #0a0a0c 100%); color: var(--text-color); min-height:100vh; display:flex; justify-content:center; align-items:center;}
-.app{width:100%; max-width:480px; padding:20px;}
-
-/* HEADER */
-.brand-title{font-weight:900; font-size:26px; text-align:center; margin-bottom:25px; color:var(--primary-color); text-shadow:0 0 10px var(--primary-color);}
+/* MAIN NEON HEADER */
+.brand-title{
+    font-size:32px;
+    font-weight:900;
+    text-align:center;
+    margin-bottom:25px;
+    text-shadow:
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #0ff,
+        0 0 30px #00ffff,
+        0 0 40px #00ffff,
+        0 0 50px #00ffff;
+    color:#0ff;
+}
+.brand-title span{
+    color:#ff00ff;
+    text-shadow: 0 0 10px #ff00ff,0 0 20px #ff00ff,0 0 30px #ff00ff;
+}
 
 /* SEARCH BOX */
-.searchbox{background: var(--card-bg); padding:25px; border-radius:15px; border:1px solid var(--outline-color); text-align:center; margin-bottom:20px;}
-input{width:100%; padding:14px; border-radius:10px; border:1px solid #333; background:var(--input-bg); color:white; font-size:16px; margin-bottom:15px; text-align:center; outline:none;}
-input:focus{border-color:var(--primary-color);}
-button.search-btn{width:100%; padding:14px; border:none; border-radius:12px; background:var(--primary-color); color:white; font-weight:800; font-size:16px; cursor:pointer; margin-bottom:15px; box-shadow:0 0 15px var(--primary-color),0 0 30px var(--primary-color);}
-button.search-btn:hover{opacity:0.9; transform: scale(1.03);}
-
-/* JOIN NETWORK BUTTON GLOW */
-button.join-btn{
-    width:100%; padding:14px; border:none; border-radius:12px; background:var(--primary-color); color:white; font-weight:700; font-size:16px; cursor:pointer;
-    box-shadow:0 0 15px var(--primary-color),0 0 30px var(--primary-color),0 0 45px var(--primary-color);
-    text-shadow:0 0 10px #fff;
-    margin-top:10px;
-    transition: all 0.3s ease;
+.searchbox{
+    background: rgba(0,0,0,0.85);
+    padding:30px;
+    border-radius:15px;
+    border:3px solid #00ffff;
+    box-shadow:0 0 20px #00ffff, 0 0 40px #00ffff;
+    text-align:center;
+    margin-bottom:20px;
 }
-button.join-btn:hover{
+input{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    border:2px solid #0ff;
+    border-radius:10px;
+    background:transparent;
+    color:#0ff;
+    margin-bottom:15px;
+    outline:none;
+    box-shadow:0 0 10px #0ff inset;
+}
+input::placeholder{
+    color:#0ff;
+    opacity:0.7;
+}
+input:focus{
+    border-color:#00ffff;
+    box-shadow:0 0 20px #00ffff inset;
+}
+
+/* SEARCH & JOIN BUTTONS */
+button.search-btn, button.join-btn{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    font-weight:700;
+    background:transparent;
+    color:#0ff;
+    border:3px solid #00ffff;
+    border-radius:12px;
+    cursor:pointer;
+    text-shadow:0 0 20px #0ff;
+    box-shadow:0 0 25px #00ffff,0 0 50px #00ffff;
+    margin-bottom:12px;
+    transition:all 0.3s ease;
+}
+button.search-btn:hover, button.join-btn:hover{
+    background:#0ff;
+    color:black;
+    box-shadow:0 0 40px #0ff,0 0 60px #00ffff;
     transform: scale(1.05);
-    box-shadow:0 0 20px var(--primary-color),0 0 40px var(--primary-color),0 0 60px var(--primary-color);
+}
+
+/* NEON PULSE ANIMATION FOR JOIN BUTTON */
+@keyframes neonPulse {
+    0%, 100% { box-shadow: 0 0 15px #0ff, 0 0 30px #00ffff; }
+    50% { box-shadow: 0 0 25px #0ff, 0 0 50px #00ffff; }
+}
+button.join-btn{
+    animation: neonPulse 1.5s infinite alternate;
 }
 
 /* RESULTS */
-.result-page{background: var(--card-bg); border-radius:15px; overflow:hidden; margin-top:20px; border:1px solid var(--outline-color);}
-.result-header{background: var(--primary-color); color:white; padding:12px; font-weight:700; text-align:center;}
-.result-table{width:100%; border-collapse:collapse;}
-.result-table td{border-bottom:1px solid #222; padding:12px; font-size:14px;}
-.result-table td:first-child{font-weight:bold; color: var(--accent-color); width:35%; text-transform:uppercase; font-size:12px;}
-.map-container{padding:12px; background:#000; margin-top:10px;}
-.map-frame{width:100%; height:200px; border:1px solid #333; border-radius:12px; margin-bottom:10px;}
-.action-buttons{display:flex; flex-direction:column; gap:8px; margin-bottom:10px;}
-.view-map-btn, .copy-map-btn{display:block; width:100%; text-align:center; padding:10px; font-weight:bold; border-radius:8px; font-size:12px; cursor:pointer; border:none;}
-.view-map-btn{background: var(--outline-color); color:white;}
-.copy-map-btn{background:#333; color:#0f0; border:1px solid #444;}
+.result-page{
+    background: rgba(0,0,0,0.85);
+    border:3px solid #00ffff;
+    border-radius:15px;
+    box-shadow:0 0 20px #00ffff,0 0 40px #00ffff,0 0 60px #00ffff;
+    margin-top:20px;
+}
+.result-header{
+    background:#00ffff;
+    color:black;
+    padding:12px;
+    font-weight:700;
+    text-align:center;
+    font-size:16px;
+}
+.result-table{
+    width:100%;
+    border-collapse:collapse;
+}
+.result-table td{
+    padding:12px;
+    font-size:14px;
+    border-bottom:1px solid #222;
+}
+.result-table td:first-child{
+    font-weight:bold;
+    color:#0ff;
+    text-transform:uppercase;
+    font-size:12px;
+}
+.map-container{
+    padding:12px;
+    background:#000;
+    margin-top:10px;
+}
+.map-frame{
+    width:100%;
+    height:200px;
+    border:1px solid #333;
+    border-radius:12px;
+    margin-bottom:10px;
+}
+.action-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-bottom:10px;
+}
+.view-map-btn, .copy-map-btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    padding:10px;
+    font-weight:bold;
+    border-radius:8px;
+    font-size:12px;
+    cursor:pointer;
+    border:none;
+}
+.view-map-btn{background:#00ffff;color:black;}
+.copy-map-btn{background:#222;color:#0f0;border:1px solid #444;}
 
 /* LOADER */
 .loader{display:none; text-align:center; margin-top:20px;}
@@ -78,10 +181,10 @@ button.join-btn:hover{
 </style>
 </head>
 
-<body data-shade="0">
+<body>
 <div class="app" id="mainApp">
 
-    <div class="brand-title">𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 🎭</div>
+    <div class="brand-title">𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 <span>(🎭)</span></div>
 
     <div class="searchbox">
         <input id="phoneInput" type="text" placeholder="03XXXXXXXXX" maxlength="11">
@@ -90,10 +193,10 @@ button.join-btn:hover{
     </div>
 
     <div class="loader" id="loader">
-        <div style="width:40px;height:40px;border:4px solid #333;border-top:4px solid var(--primary-color);border-radius:50%;animation:spin .8s linear infinite;margin:auto;"></div>
+        <div style="width:40px;height:40px;border:4px solid #333;border-top:4px solid #0ff;border-radius:50%;animation:spin .8s linear infinite;margin:auto;"></div>
     </div>
 
-    <div id="status" style="text-align:center; margin-top:15px; color:var(--primary-color); font-weight:bold;"></div>
+    <div id="status" style="text-align:center; margin-top:15px; color:#0ff; font-weight:bold;"></div>
     <div id="results"></div>
 
 </div>
@@ -107,16 +210,24 @@ async function executeSearch() {
     const results = document.getElementById("results");
     const status = document.getElementById("status");
 
-    if(num.length < 10){ status.innerText="Error: Invalid Number"; return; }
+    if(num.length<10){
+        status.innerText="Error: Invalid Number";
+        return;
+    }
 
-    results.innerHTML=""; status.innerText=""; loader.style.display="block";
+    results.innerHTML="";
+    status.innerText="";
+    loader.style.display="block";
 
     try{
-        const res = await fetch(API + num);
+        const res = await fetch(API+num);
         const data = await res.json();
         loader.style.display="none";
 
-        if(!data.success || !data.result || data.result.length===0){ status.innerText="No Records Found"; return; }
+        if(!data.success || !data.result || data.result.length===0){
+            status.innerText="No Records Found";
+            return;
+        }
         renderAll(data.result);
     }catch(e){
         loader.style.display="none";
@@ -126,9 +237,9 @@ async function executeSearch() {
 
 function copyToClipboard(text, btn){
     navigator.clipboard.writeText(text).then(()=>{
-        const original = btn.innerText;
+        const originalText = btn.innerText;
         btn.innerText="✅ COPIED!";
-        setTimeout(()=>{ btn.innerText = original; },2000);
+        setTimeout(()=>{btn.innerText=originalText;},2000);
     });
 }
 
@@ -136,10 +247,10 @@ function renderAll(records){
     const results = document.getElementById("results");
     results.innerHTML="";
     records.forEach((r,index)=>{
-        const address = r.address || "N/A";
-        const encoded = encodeURIComponent(address);
-        const mapEmbed = `https://maps.google.com/maps?q=${encoded}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
-        const mapExternal = `https://www.google.com/maps/search/${encoded}`;
+        const address=r.address||"N/A";
+        const encodedAddr=encodeURIComponent(address);
+        const mapEmbedUrl=`https://maps.google.com/maps?q=${encodedAddr}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+        const mapExternalUrl=`https://www.google.com/maps/search/${encodedAddr}`;
 
         results.innerHTML+=`
         <div class="result-page">
@@ -150,12 +261,13 @@ function renderAll(records){
                 <tr><td>MOBILE</td><td>${r.mobile||"N/A"}</td></tr>
                 <tr><td>ADDRESS</td><td>${address}</td></tr>
             </table>
-
-            ${address!=="N/A"?`<div class="map-container">
-                <iframe class="map-frame" src="${mapEmbed}" frameborder="0"></iframe>
+            
+            ${address!=="N/A"?`
+            <div class="map-container">
+                <iframe class="map-frame" src="${mapEmbedUrl}" frameborder="0"></iframe>
                 <div class="action-buttons">
-                    <a href="${mapExternal}" target="_blank" class="view-map-btn">📍 OPEN IN GOOGLE MAPS</a>
-                    <button class="copy-map-btn" onclick="copyToClipboard('${mapExternal}', this)">🔗 COPY MAP LINK</button>
+                    <a href="${mapExternalUrl}" target="_blank" class="view-map-btn">📍 OPEN IN GOOGLE MAPS</a>
+                    <button class="copy-map-btn" onclick="copyToClipboard('${mapExternalUrl}', this)">🔗 COPY MAP LINK</button>
                 </div>
             </div>`:''}
         </div>`;
