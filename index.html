@@ -4,201 +4,195 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 🎭</title>
-
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+/* THEME VARIABLES */
+:root {
+    --bg-color: #0a0a0c;
+    --card-bg: #121214;
+    --text-color: #ffffff;
+    --input-bg: #1a1a1d;
+    --primary-color: #00ffff;
+    --accent-color: #00ffff;
+    --outline-color: #00ffff;
+}
 
 body {
     margin:0;
-    font-family: 'Orbitron', sans-serif;
-    background: url('https://i.postimg.cc/9XxMCVLF/Screenshot-20250802-114226-3.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #0ff;
+    font-family:'Segoe UI',sans-serif;
+    background: radial-gradient(circle at 50% 50%, #16161a 0%, #0a0a0c 100%);
+    color: var(--text-color);
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:flex-start;
-    min-height:100vh;
-    padding:30px 0;
-}
-
-/* APP CONTAINER */
-.app{
-    width: 100%;
-    max-width:480px;
-    padding:20px;
+    padding:30px 10px;
     box-sizing:border-box;
 }
 
-/* MAIN NEON HEADER */
-.brand-title{
-    font-size:32px;
-    font-weight:900;
-    text-align:center;
-    margin-bottom:25px;
-    text-shadow:
-        0 0 5px #0ff,
-        0 0 10px #0ff,
-        0 0 20px #0ff,
-        0 0 30px #00ffff,
-        0 0 40px #00ffff,
-        0 0 50px #00ffff;
-    color:#0ff;
-}
-.brand-title span{
-    color:#ff00ff;
-    text-shadow: 0 0 10px #ff00ff,0 0 20px #ff00ff,0 0 30px #ff00ff;
+.app {
+    width:100%;
+    max-width:520px;
 }
 
-/* SEARCH BOX */
+/* NEON HEADER BOX */
+.header-box {
+    text-align:center;
+    margin-bottom:30px;
+}
+.neon-box {
+    padding: 15px 25px;
+    border: 3px solid var(--primary-color);
+    border-radius: 12px;
+    box-shadow:
+        0 0 10px #0ff,
+        0 0 20px #0ff,
+        0 0 30px #0ff,
+        0 0 40px #00ffff,
+        0 0 50px #00ffff;
+    color: var(--primary-color);
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* SEARCH SECTION */
 .searchbox{
-    background: rgba(0,0,0,0.85);
-    padding:30px;
-    border-radius:15px;
-    border:3px solid #00ffff;
-    box-shadow:0 0 20px #00ffff, 0 0 40px #00ffff;
+    background: var(--card-bg);
+    padding: 25px 20px;
+    border-radius: 15px;
+    border: 2px solid var(--outline-color);
     text-align:center;
     margin-bottom:20px;
 }
-input{
+.searchbox input {
     width:100%;
     padding:12px;
+    border-radius:8px;
+    border:1px solid #333;
+    background: var(--input-bg);
+    color:white;
     font-size:16px;
-    border:2px solid #0ff;
-    border-radius:10px;
-    background:transparent;
-    color:#0ff;
     margin-bottom:15px;
+    text-align:center;
     outline:none;
-    box-shadow:0 0 10px #0ff inset;
 }
-input::placeholder{
-    color:#0ff;
-    opacity:0.7;
-}
-input:focus{
-    border-color:#00ffff;
-    box-shadow:0 0 20px #00ffff inset;
-}
-
-/* SEARCH & JOIN BUTTONS */
-button.search-btn, button.join-btn{
+.searchbox input:focus { border-color: var(--primary-color); }
+.searchbox button.search-btn {
     width:100%;
     padding:12px;
-    font-size:16px;
-    font-weight:700;
-    background:transparent;
-    color:#0ff;
-    border:3px solid #00ffff;
-    border-radius:12px;
-    cursor:pointer;
-    text-shadow:0 0 20px #0ff;
-    box-shadow:0 0 25px #00ffff,0 0 50px #00ffff;
-    margin-bottom:12px;
-    transition:all 0.3s ease;
-}
-button.search-btn:hover, button.join-btn:hover{
-    background:#0ff;
+    border:none;
+    border-radius:8px;
+    background: var(--primary-color);
     color:black;
-    box-shadow:0 0 40px #0ff,0 0 60px #00ffff;
-    transform: scale(1.05);
+    font-weight:800;
+    font-size:16px;
+    cursor:pointer;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+.searchbox button.search-btn:hover {
+    background:black;
+    color: var(--primary-color);
+    box-shadow:0 0 20px #0ff;
 }
 
-/* NEON PULSE ANIMATION FOR JOIN BUTTON */
-@keyframes neonPulse {
-    0%, 100% { box-shadow: 0 0 15px #0ff, 0 0 30px #00ffff; }
-    50% { box-shadow: 0 0 25px #0ff, 0 0 50px #00ffff; }
+/* JOIN NETWORK BUTTON */
+.join-network {
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background: var(--primary-color);
+    color:black;
+    font-weight:800;
+    font-size:16px;
+    cursor:pointer;
+    text-transform:uppercase;
+    margin-bottom:15px;
 }
-button.join-btn{
-    animation: neonPulse 1.5s infinite alternate;
+.join-network:hover {
+    background:black;
+    color: var(--primary-color);
+    box-shadow:0 0 20px #0ff;
 }
 
 /* RESULTS */
+.loader { display:none; text-align:center; margin-top:20px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
 .result-page{
-    background: rgba(0,0,0,0.85);
-    border:3px solid #00ffff;
-    border-radius:15px;
-    box-shadow:0 0 20px #00ffff,0 0 40px #00ffff,0 0 60px #00ffff;
-    margin-top:20px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border:1px solid var(--outline-color);
 }
 .result-header{
-    background:#00ffff;
+    background: var(--primary-color);
     color:black;
-    padding:12px;
-    font-weight:700;
+    font-weight:800;
+    padding:10px;
     text-align:center;
-    font-size:16px;
 }
 .result-table{
     width:100%;
-    border-collapse:collapse;
+    border-collapse: collapse;
 }
 .result-table td{
-    padding:12px;
-    font-size:14px;
     border-bottom:1px solid #222;
+    padding:10px;
 }
 .result-table td:first-child{
     font-weight:bold;
-    color:#0ff;
-    text-transform:uppercase;
-    font-size:12px;
+    color: var(--accent-color);
 }
-.map-container{
-    padding:12px;
-    background:#000;
-    margin-top:10px;
+
+/* MAP */
+.map-container {
+    padding:15px;
 }
-.map-frame{
+.map-frame {
     width:100%;
     height:200px;
     border:1px solid #333;
     border-radius:12px;
     margin-bottom:10px;
 }
-.action-buttons{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    margin-bottom:10px;
-}
-.view-map-btn, .copy-map-btn{
+.view-map-btn, .copy-map-btn {
     display:block;
     width:100%;
     text-align:center;
     padding:10px;
+    text-decoration:none;
     font-weight:bold;
     border-radius:8px;
-    font-size:12px;
-    cursor:pointer;
-    border:none;
+    margin-bottom:5px;
 }
-.view-map-btn{background:#00ffff;color:black;}
-.copy-map-btn{background:#222;color:#0f0;border:1px solid #444;}
-
-/* LOADER */
-.loader{display:none; text-align:center; margin-top:20px;}
-@keyframes spin{to{transform:rotate(360deg);}}
+.view-map-btn { background: var(--outline-color); color:white; }
+.copy-map-btn { background:#333; color:#00ff00; border:1px solid #444; }
 </style>
 </head>
-
 <body>
-<div class="app" id="mainApp">
 
-    <div class="brand-title">𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 <span>(🎭)</span></div>
+<div class="app">
+    <!-- NEON HEADER -->
+    <div class="header-box">
+        <div class="neon-box">𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 🎭</div>
+    </div>
 
+    <!-- SEARCH + JOIN BUTTON -->
     <div class="searchbox">
         <input id="phoneInput" type="text" placeholder="03XXXXXXXXX" maxlength="11">
         <button class="search-btn" onclick="executeSearch()">SEARCH DATABASE</button>
-        <button class="join-btn" onclick="window.open('https://mrisbrand-network-six.vercel.app/', '_blank')">JOIN OUR NETWORK</button>
+        <button class="join-network" onclick="window.open('https://mrisbrand-network-six.vercel.app/', '_blank')">JOIN OUR NETWORK</button>
     </div>
 
     <div class="loader" id="loader">
-        <div style="width:40px;height:40px;border:4px solid #333;border-top:4px solid #0ff;border-radius:50%;animation:spin .8s linear infinite;margin:auto;"></div>
+        <div style="width:40px;height:40px;border:4px solid #333;border-top:4px solid var(--primary-color);border-radius:50%;animation:spin .8s linear infinite;margin:auto;"></div>
     </div>
 
-    <div id="status" style="text-align:center; margin-top:15px; color:#0ff; font-weight:bold;"></div>
+    <div id="status" style="text-align:center; margin-top:15px; color:var(--primary-color); font-weight:bold;"></div>
     <div id="results"></div>
-
 </div>
 
 <script>
@@ -210,67 +204,61 @@ async function executeSearch() {
     const results = document.getElementById("results");
     const status = document.getElementById("status");
 
-    if(num.length<10){
-        status.innerText="Error: Invalid Number";
-        return;
-    }
+    if(num.length < 10){ status.innerText="Error: Invalid Number"; return; }
 
-    results.innerHTML="";
-    status.innerText="";
-    loader.style.display="block";
+    results.innerHTML = "";
+    status.innerText = "";
+    loader.style.display = "block";
 
     try{
         const res = await fetch(API+num);
         const data = await res.json();
-        loader.style.display="none";
+        loader.style.display = "none";
 
         if(!data.success || !data.result || data.result.length===0){
-            status.innerText="No Records Found";
-            return;
+            status.innerText="No Records Found"; return;
         }
         renderAll(data.result);
-    }catch(e){
-        loader.style.display="none";
+    } catch(e){
+        loader.style.display = "none";
         status.innerText="API Offline";
     }
 }
 
-function copyToClipboard(text, btn){
-    navigator.clipboard.writeText(text).then(()=>{
-        const originalText = btn.innerText;
-        btn.innerText="✅ COPIED!";
-        setTimeout(()=>{btn.innerText=originalText;},2000);
-    });
-}
-
 function renderAll(records){
     const results = document.getElementById("results");
-    results.innerHTML="";
+    results.innerHTML = "";
     records.forEach((r,index)=>{
-        const address=r.address||"N/A";
-        const encodedAddr=encodeURIComponent(address);
-        const mapEmbedUrl=`https://maps.google.com/maps?q=${encodedAddr}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
-        const mapExternalUrl=`https://www.google.com/maps/search/${encodedAddr}`;
+        const address = r.address || "N/A";
+        const encodedAddr = encodeURIComponent(address);
+        const mapEmbedUrl = `https://maps.google.com/maps?q=${encodedAddr}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+        const mapExternalUrl = `https://www.google.com/maps/search/${encodedAddr}`;
 
-        results.innerHTML+=`
+        results.innerHTML += `
         <div class="result-page">
             <div class="result-header">RECORD #${index+1}</div>
             <table class="result-table">
-                <tr><td>NAME</td><td>${r.name||"N/A"}</td></tr>
-                <tr><td>CNIC</td><td>${r.cnic||"N/A"}</td></tr>
-                <tr><td>MOBILE</td><td>${r.mobile||"N/A"}</td></tr>
+                <tr><td>NAME</td><td>${r.name || "N/A"}</td></tr>
+                <tr><td>CNIC</td><td>${r.cnic || "N/A"}</td></tr>
+                <tr><td>MOBILE</td><td>${r.mobile || "N/A"}</td></tr>
                 <tr><td>ADDRESS</td><td>${address}</td></tr>
             </table>
             
-            ${address!=="N/A"?`
+            ${address !== "N/A" ? `
             <div class="map-container">
                 <iframe class="map-frame" src="${mapEmbedUrl}" frameborder="0"></iframe>
-                <div class="action-buttons">
-                    <a href="${mapExternalUrl}" target="_blank" class="view-map-btn">📍 OPEN IN GOOGLE MAPS</a>
-                    <button class="copy-map-btn" onclick="copyToClipboard('${mapExternalUrl}', this)">🔗 COPY MAP LINK</button>
-                </div>
-            </div>`:''}
+                <a href="${mapExternalUrl}" target="_blank" class="view-map-btn">📍 OPEN IN GOOGLE MAPS</a>
+                <button class="copy-map-btn" onclick="copyToClipboard('${mapExternalUrl}', this)">🔗 COPY MAP LINK</button>
+            </div>` : ''}
         </div>`;
+    });
+}
+
+function copyToClipboard(text, btn){
+    navigator.clipboard.writeText(text).then(()=>{
+        const orig=btn.innerText;
+        btn.innerText="✅ COPIED!";
+        setTimeout(()=>{ btn.innerText=orig; },2000);
     });
 }
 </script>
