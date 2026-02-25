@@ -24,8 +24,9 @@ body {
   color: var(--text-color);
   min-height:100vh;
   display:flex;
-  justify-content:center;
-  align-items:flex-start;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
   padding:50px 10px 30px 10px;
   box-sizing:border-box;
 }
@@ -166,6 +167,20 @@ body {
 }
 .view-map-btn { background: var(--outline-color); color:white; }
 .copy-map-btn { background:#333; color:#00ff00; border:1px solid #444; }
+
+/* FOOTER */
+.footer-box {
+  margin-top:50px;
+  padding:15px 25px;
+  border:3px solid var(--primary-color);
+  border-radius:12px;
+  color: var(--primary-color);
+  font-weight:900;
+  text-align:center;
+  display:inline-block;
+  animation: neonPulse 1.5s infinite alternate;
+  font-size:16px;
+}
 </style>
 </head>
 <body>
@@ -189,6 +204,11 @@ body {
 
     <div id="status" style="text-align:center; margin-top:15px; color:var(--primary-color); font-weight:bold;"></div>
     <div id="results"></div>
+
+    <!-- FOOTER -->
+    <div class="footer-box">
+        [ © 𝟮𝟬𝟮𝟲 𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 | 𝐀𝐥𝐥 𝐑𝐢𝐠𝐡𝐭𝐬 𝐑𝐞𝐬𝐞𝐫𝐯𝐞𝐝 🎭 ]
+    </div>
 </div>
 
 <script>
