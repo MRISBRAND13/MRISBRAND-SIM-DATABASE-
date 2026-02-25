@@ -5,193 +5,211 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 🎭</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
 :root {
-    --bg-color: #0a0a0c;
-    --card-bg: #121214;
-    --text-color: #0ff;
-    --input-bg: #1a1a1d;
-    --primary-color: #0ff;
-    --accent-color: #00ffff;
-    --outline-color: #0ff;
+  --bg-color: #0a0a0c;
+  --card-bg: rgba(0,0,0,0.85);
+  --text-color: #0ff;
+  --primary-color: #0ff;
+  --accent-color: #0ff;
+  --outline-color: #0ff;
 }
+
 body {
-    background: url('https://i.postimg.cc/9XxMCVLF/Screenshot-20250802-114226-3.jpg') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Segoe UI', sans-serif;
-    color: var(--text-color);
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
+  margin:0;
+  font-family:'Orbitron',sans-serif;
+  background: url('https://i.postimg.cc/9XxMCVLF/Screenshot-20250802-114226-3.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text-color);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+  padding:50px 10px 30px 10px;
+  box-sizing:border-box;
 }
-.app {
-    max-width: 520px;
-    width: 100%;
-    margin-top: 40px;
-    background: rgba(0,0,0,0.85);
-    padding: 20px;
-    border: 2px solid var(--outline-color);
-    border-radius: 12px;
-    box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--accent-color);
+
+/* PULSING NEON ANIMATION */
+@keyframes neonPulse {
+  0%,100% { box-shadow:0 0 5px #0ff,0 0 10px #0ff,0 0 20px #00ffff,0 0 40px #0ff,0 0 60px #00ffff; }
+  50% { box-shadow:0 0 15px #0ff,0 0 30px #0ff,0 0 50px #00ffff,0 0 70px #0ff,0 0 90px #00ffff; }
 }
-.brand-title {
-    text-align: center;
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 15px;
-    border: 2px solid var(--outline-color);
-    border-radius: 12px;
-    box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--accent-color);
-    margin-bottom: 25px;
+
+/* APP CONTAINER */
+.app { width:100%; max-width:520px; }
+
+/* NEON HEADER BOX */
+.header-box { text-align:center; margin-bottom:40px; }
+.neon-box {
+  padding: 20px 30px;
+  border: 3px solid var(--primary-color);
+  border-radius: 12px;
+  color: var(--primary-color);
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  display: inline-block;
+  animation: neonPulse 1.5s infinite alternate;
 }
-.searchbox {
-    text-align: center;
-    margin-bottom: 20px;
+
+/* SEARCH SECTION */
+.searchbox{
+  background: var(--card-bg);
+  padding:30px 20px;
+  border-radius: 15px;
+  border: 3px solid var(--outline-color);
+  text-align:center;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  box-shadow:0 0 15px #0ff, 0 0 30px #0ff;
 }
-input#phoneInput {
-    width: 80%;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 12px;
-    border: 2px solid var(--primary-color);
-    background: var(--input-bg);
-    color: var(--text-color);
-    outline: none;
-    box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--accent-color);
-    text-align: center;
-    margin-bottom: 12px;
+.searchbox input {
+  width:90%;
+  max-width:350px;
+  padding:12px;
+  border-radius:8px;
+  border:2px solid var(--outline-color);
+  background: rgba(0,0,0,0.7);
+  color:white;
+  font-size:16px;
+  margin-bottom:15px;
+  text-align:center;
+  outline:none;
+  box-shadow:0 0 10px #0ff inset;
+  animation: neonPulse 1.5s infinite alternate;
+  transition: all 0.3s ease;
 }
-input#phoneInput:focus {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--primary-color);
+.searchbox input:focus { 
+  border-color: var(--primary-color); 
+  box-shadow:0 0 15px #0ff inset;
 }
-button.search-btn, button#network-btn {
-    width: 85%;
-    padding: 12px;
-    font-size: 16px;
-    font-weight: 800;
-    border-radius: 12px;
-    border: 2px solid var(--primary-color);
-    background: transparent;
-    color: var(--text-color);
-    cursor: pointer;
-    box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--accent-color);
-    transition: all 0.3s ease;
-    margin-bottom: 15px;
+.searchbox button.search-btn,
+.join-network {
+  width:90%;
+  max-width:350px;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background: transparent;
+  color: var(--text-color);
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+  text-transform:uppercase;
+  margin-bottom:15px;
+  box-shadow:0 0 15px #0ff,0 0 30px #0ff,0 0 45px #00ffff;
+  animation: neonPulse 1.5s infinite alternate;
+  transition: all 0.3s ease;
 }
-button.search-btn:hover, button#network-btn:hover {
-    background: var(--primary-color);
-    color: black;
-    box-shadow: 0 0 25px var(--accent-color), 0 0 40px var(--primary-color);
-    transform: scale(1.05);
+.searchbox button.search-btn:hover,
+.join-network:hover {
+  background: var(--text-color);
+  color:black;
+  box-shadow:0 0 25px #0ff, 0 0 50px #00ffff, 0 0 70px #0ff;
 }
-.loader {
-    display: none;
-    text-align: center;
-    margin-top: 15px;
-}
+
+/* RESULTS */
+.loader { display:none; text-align:center; margin-top:20px; }
 @keyframes spin { to { transform: rotate(360deg); } }
-#status { font-weight: bold; margin-top: 10px; color: var(--primary-color); }
-.result-page {
-    background: var(--card-bg);
-    border-radius: 15px;
-    margin-top: 20px;
-    border: 1px solid var(--outline-color);
-    padding: 10px;
+
+.result-page{
+  background: var(--card-bg);
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border:3px solid var(--outline-color);
+  box-shadow:0 0 20px #0ff,0 0 40px #0ff inset;
 }
-.result-header {
-    background: var(--primary-color);
-    color: black;
-    text-align: center;
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 8px;
-    margin-bottom: 10px;
+.result-header{
+  background: var(--primary-color);
+  color:black;
+  font-weight:800;
+  padding:10px;
+  text-align:center;
 }
-.result-table {
-    width: 100%;
-    border-collapse: collapse;
+.result-table{
+  width:100%;
+  border-collapse: collapse;
 }
-.result-table td {
-    border-bottom: 1px solid #222;
-    padding: 8px;
-    font-size: 14px;
+.result-table td{
+  border-bottom:1px solid #222;
+  padding:10px;
 }
-.result-table td:first-child {
-    font-weight: bold;
-    color: var(--accent-color);
-    text-transform: uppercase;
-    width: 35%;
-    font-size: 12px;
+.result-table td:first-child{
+  font-weight:bold;
+  color: var(--accent-color);
 }
-.map-container { text-align: center; margin-top: 10px; }
+
+/* MAP */
+.map-container {
+  padding:15px;
+}
 .map-frame {
-    width: 100%;
-    max-width: 400px;
-    height: 200px;
-    border: 1px solid #333;
-    border-radius: 12px;
-    margin: 10px auto;
-    display: block;
+  width:100%;
+  height:200px;
+  border:1px solid #333;
+  border-radius:12px;
+  margin-bottom:10px;
 }
 .view-map-btn, .copy-map-btn {
-    display: inline-block;
-    width: calc(50% - 10px);
-    margin: 5px 5px 0 5px;
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
+  display:block;
+  width:100%;
+  text-align:center;
+  padding:10px;
+  text-decoration:none;
+  font-weight:bold;
+  border-radius:8px;
+  margin-bottom:5px;
 }
-.view-map-btn { background: var(--outline-color); color: white; text-decoration:none; }
-.copy-map-btn { background:#222; color:#00ff00; border:1px solid #444; }
-button.new-search-btn {
-    margin-top: 10px;
-    padding: 8px 20px;
-    border-radius: 8px;
-    border:1px solid #444;
-    background:#222;
-    color:white;
-    cursor:pointer;
-}
-.footer {
-    margin-top: 25px;
-    text-align: center;
-    padding: 12px;
-    border: 2px solid var(--outline-color);
-    border-radius: 12px;
-    box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--accent-color);
-    color: var(--primary-color);
-    font-weight: bold;
+.view-map-btn { background: var(--outline-color); color:white; }
+.copy-map-btn { background:#333; color:#00ff00; border:1px solid #444; }
+
+/* FOOTER */
+.footer-box {
+  margin-top:50px;
+  padding:15px 25px;
+  border:3px solid var(--primary-color);
+  border-radius:12px;
+  color: var(--primary-color);
+  font-weight:900;
+  text-align:center;
+  display:inline-block;
+  animation: neonPulse 1.5s infinite alternate;
+  font-size:16px;
 }
 </style>
 </head>
 <body>
-<div class="app">
-    <div class="brand-title">[ 𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 🎭 ]</div>
 
+<div class="app">
+    <!-- NEON HEADER -->
+    <div class="header-box">
+        <div class="neon-box">𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄 🎭</div>
+    </div>
+
+    <!-- SEARCH + JOIN BUTTON -->
     <div class="searchbox">
-        <input type="text" id="phoneInput" placeholder="03XXXXXXXXX" maxlength="11">
+        <input id="phoneInput" type="text" placeholder="03XXXXXXXXX" maxlength="11">
         <button class="search-btn" onclick="executeSearch()">SEARCH DATABASE</button>
-        <button id="network-btn" onclick="window.open('https://mrisbrand-network-six.vercel.app/', '_blank')">JOIN OUR NETWORK</button>
+        <button class="join-network" onclick="window.open('https://mrisbrand-network-six.vercel.app/', '_blank')">JOIN OUR NETWORK</button>
     </div>
 
     <div class="loader" id="loader">
         <div style="width:40px;height:40px;border:4px solid #333;border-top:4px solid var(--primary-color);border-radius:50%;animation:spin .8s linear infinite;margin:auto;"></div>
     </div>
 
-    <div id="status"></div>
+    <div id="status" style="text-align:center; margin-top:15px; color:var(--primary-color); font-weight:bold;"></div>
     <div id="results"></div>
-</div>
 
-<div class="footer">[ © 𝟮𝟬𝟮𝟲 𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 | 𝐀𝐥𝐥 𝐑𝐢𝐠𝐡𝐭s 𝐑𝐞𝐬𝐞𝐫𝐯𝐞𝐝 🎭 ]</div>
+    <!-- FOOTER -->
+    <div class="footer-box">
+        © 𝟮𝟬𝟮𝟲 𝐌𝐑𝐈𝐒𝐁𝐑𝐀𝐍𝐃 | 𝐀𝐥𝐥 𝐑𝐢𝐠𝐡𝐭𝐬 𝐑𝐞𝐬𝐞𝐫𝐯𝐞𝐝 🎭
+    </div>
+</div>
 
 <script>
 const API = "https://howler-database-api.vercel.app/api/lookup?phone=";
@@ -201,38 +219,38 @@ async function executeSearch() {
     const loader = document.getElementById("loader");
     const results = document.getElementById("results");
     const status = document.getElementById("status");
-    if(num.length<10){ status.innerText="Error: Invalid Number"; return; }
-    results.innerHTML=""; status.innerText=""; loader.style.display="block";
-    try {
+
+    if(num.length < 10){ status.innerText="Error: Invalid Number"; return; }
+
+    results.innerHTML = "";
+    status.innerText = "";
+    loader.style.display = "block";
+
+    try{
         const res = await fetch(API+num);
         const data = await res.json();
-        loader.style.display="none";
-        if(!data.success || !data.result || data.result.length===0){ status.innerText="No Records Found"; return; }
+        loader.style.display = "none";
+
+        if(!data.success || !data.result || data.result.length===0){
+            status.innerText="No Records Found"; return;
+        }
         renderAll(data.result);
-    } catch(e) {
-        loader.style.display="none";
+    } catch(e){
+        loader.style.display = "none";
         status.innerText="API Offline";
     }
 }
 
-function copyToClipboard(text, btn){
-    navigator.clipboard.writeText(text).then(()=>{
-        const old=btn.innerText;
-        btn.innerText="✅ COPIED!";
-        setTimeout(()=>{btn.innerText=old;},2000);
-    });
-}
-
 function renderAll(records){
     const results = document.getElementById("results");
-    results.innerHTML="";
+    results.innerHTML = "";
     records.forEach((r,index)=>{
         const address = r.address || "N/A";
         const encodedAddr = encodeURIComponent(address);
         const mapEmbedUrl = `https://maps.google.com/maps?q=${encodedAddr}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
         const mapExternalUrl = `https://www.google.com/maps/search/${encodedAddr}`;
 
-        results.innerHTML+=`
+        results.innerHTML += `
         <div class="result-page">
             <div class="result-header">RECORD #${index+1}</div>
             <table class="result-table">
@@ -241,24 +259,25 @@ function renderAll(records){
                 <tr><td>MOBILE</td><td>${r.mobile || "N/A"}</td></tr>
                 <tr><td>ADDRESS</td><td>${address}</td></tr>
             </table>
-            ${address!=="N/A"?`
+            
+            ${address !== "N/A" ? `
             <div class="map-container">
                 <iframe class="map-frame" src="${mapEmbedUrl}" frameborder="0"></iframe>
-                <div>
-                  <a href="${mapExternalUrl}" target="_blank" class="view-map-btn">📍 OPEN IN GOOGLE MAPS</a>
-                  <button class="copy-map-btn" onclick="copyToClipboard('${mapExternalUrl}', this)">🔗 COPY MAP LINK</button>
-                </div>
-            </div>`:""}
-            <div style="text-align:center;"><button class="new-search-btn" onclick="resetSearch()">NEW SEARCH</button></div>
+                <a href="${mapExternalUrl}" target="_blank" class="view-map-btn">📍 OPEN IN GOOGLE MAPS</a>
+                <button class="copy-map-btn" onclick="copyToClipboard('${mapExternalUrl}', this)">🔗 COPY MAP LINK</button>
+            </div>` : ''}
         </div>`;
     });
 }
 
-function resetSearch() {
-    document.getElementById("phoneInput").value="";
-    document.getElementById("results").innerHTML="";
-    document.getElementById("status").innerText="";
+function copyToClipboard(text, btn){
+    navigator.clipboard.writeText(text).then(()=>{
+        const orig=btn.innerText;
+        btn.innerText="✅ COPIED!";
+        setTimeout(()=>{ btn.innerText=orig; },2000);
+    });
 }
 </script>
+
 </body>
 </html>
